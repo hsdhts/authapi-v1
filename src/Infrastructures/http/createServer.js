@@ -25,14 +25,6 @@ const createServer = async (container) => {
     },
   ]);
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: () => ({
-      value: 'Hello Rizal',
-    }),
-  });
-
   // penanganan error
   server.ext('onPreResponse', (request, h) => {
     // mendapatkan konteks response dari request
