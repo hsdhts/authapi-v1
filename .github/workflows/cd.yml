@@ -13,36 +13,10 @@ jobs:
     - name: SSH and deploy app
       uses: appleboy/ssh-action@master
       with:
-        host: ec2-3-26-189-12.ap-southeast-2.compute.amazonaws.com
-        username: ubuntu
-        key: -----BEGIN RSA PRIVATE KEY-----
-            MIIEpQIBAAKCAQEAtJXNS2VyfhGJ2KMUeYy2PpDDyupcygI9QzSctZcmCdHGHFu2
-            a+OQBS+agAX5D8ozE0hQxoUvM/+by67NLU0/s5QWMdlk2v2EYLssctx7QFu68+0O
-            em5Vfc/l/9ipvQ5/2P5WJm0hH/q9W0gtyaC4Yn5oWiZOLkHzkkFZtUaD62x5EpxY
-            LrfxSbIceGKAZbHjoN7LxT6XF6UNFdHzTCIwzgvSj+9eeYTlND27iU3ybxdTeUBp
-            +mwPheuB49KFRSSaG6iVO4DIjOJtce017lAwWMYdQ95iU8sG+/Tm/aF/qvrIbmfV
-            fQkEoNH4zm3naPtCPeO2KWx5yN+QsT19EEaCtwIDAQABAoIBAHXwiD2/qcDwT2jv
-            SUYBQl0mStlRqvw77irgR6DJcIxlNs/6je90lfDtICiQvhMz6ZukVSzyetupCuVB
-            6rq1gu8TvlMcOiRUAoryc5soqE5mGnmIzzXirW8Xwo0Pwfu5ZoIfycAa8dFi/xyI
-            zW6rywB4skp+Tf0kEaHpkF82CJ5OBDqa7DlyrEQosKE2mKq9QsnIn4B0ekW/NjL3
-            rjdLct+bgglwyq6fuLPNriNRr+ZvuPUXr+iYoiIKfpgkMaBYPyz3D33w7b9UAapT
-            A7fxjv/pn7xWtoRTXyUuMmXP0XCwkiKpCo0SNY1id0UqQuVLuOKpFR9owa8Kccvb
-            ah+s5jECgYEA93xEc3cNtUlVmv7b9jfPIdhF6AXqwhC8sLzMmC/A/+vSBykVgasO
-            gp97kcE+Yf/+wNYY7ziPdo6bcRQb53dfFkuPoqY+fWNCNcfhuF8/04/53y0udpXO
-            3fdSyN6bFG18+5u35cSd9amrF08BdO0YmsNmEmRxbQxnbSrLg87on40CgYEAusxP
-            KwpIE1BADiYqpeAY0PsqE9EB7G91iYoQ6oe0iqQCQb+qEshlMAtS9tpgMXFJjJFT
-            r2+9Kzjcb8Y8FBfms1S1GPmqfChb/evhRq7jJvVRHoJOoNp6srK1hcvaAh1WWzMz
-            uiRDeOdiwk2Lbba2CN8LRZPIDIi4fVix71UP6FMCgYEAkt/PB++J1SL2iQvjotYw
-            OVfO9Qo97npcYU9K5K7CjZ94gANj3haUf/UCMthKm4J/wBXPqnkYuzWbDprujIoN
-            hn/FeLPMtkFoE97SGMd+a6IwmsCHqJzzrkuPd+KUiqUH3ZLmqpfrXtYY0bZzmN71
-            ETQRqayunBcWcnVJXqo26CkCgYEAkBHX1Yg+grbYUJFbP0gRm8y7bUE8TJDChGv6
-            FAjKVEueeftLPuVUNbPmLwHKQxfu8/16H8r8iYN3cLXhzFWK1zEz46lbthqiqLru
-            qsdj5r457F/wKNuY2o4+toy8/fiGjBx3fs9NQsijQNzx9pJ+32S3mtgZ6KDiObrY
-            sZBXjoUCgYEA5BcrVtSWjqxHGaZJWIESZyxbOY5gWdEzFExhRVJ8yRNFokg4ZDYV
-            cZVWSc3wZvfUjWvROJf0+k8PqwdPRyGOZ349hwJMTbZ/Zrtp9ru9uJkQDtpMeRYT
-            HnqAQb9hJNAL1hrut0jSqRutDMW9zjlz1yAY9RiEceRgKAfqam7OL5E=
-            -----END RSA PRIVATE KEY-----
-        port: 22
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
         script: |
           cd ~/authapi-v1
           git pull origin master
